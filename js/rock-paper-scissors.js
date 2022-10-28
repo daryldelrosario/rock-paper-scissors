@@ -34,12 +34,6 @@ function getPlayerChoice() {
     }
 }
 
-const playerSelection = getPlayerChoice();
-const computerSelection = getComputerChoice();
-
-console.log(playerSelection);
-console.log(computerSelection);
-
 function playRound(playerSelection, computerSelection) {
     let message = "";
 
@@ -85,5 +79,55 @@ function playRound(playerSelection, computerSelection) {
             default:
                 return("Experiencing Techical Difficulties");
         }
+    }
+}
+
+function game() {
+    let playerScore = 0;
+    let computerScore = 0;
+
+    for (let i = 0; i < 5; i++) {
+        const playerSelection = prompt("Choose Rock - Paper - Scissors");
+        const computerSelection = getComputerChoice();
+
+        console.log("=======");
+        console.log("Round " + (i + 1));
+        console.log("=======");
+
+        let msg = playRound(playerSelection, computerSelection);
+
+        if(msg.includes("Win")) {
+            playerScore++;
+            console.log("Player Chose: " + playerSelection);
+            console.log("Computer Chose: " + computerSelection);
+            console.log(msg);
+            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
+        } else if(msg.includes("Lose")) {
+            computerScore++;
+            console.log("Player Chose: " + playerSelection);
+            console.log("Computer Chose: " + computerSelection);
+            console.log(msg);
+            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
+        } else {
+            playerScore++;
+            computerScore++;
+            console.log("Player Chose: " + playerSelection);
+            console.log("Computer Chose: " + computerSelection);
+            console.log(msg);
+            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
+        }
+    }
+
+    console.log("=======");
+    console.log("Player Total Score: " + playerScore);
+    console.log("Computer Total Score: " + computerScore);
+    console.log("=======");
+
+    if(playerScore > computerScore) {
+        console.log("You are the winner!");
+    } else if(playerScore < computerScore){
+        console.log("The computer beat you this time ...");
+    } else {
+        console.log("Looks like it's a tie +-");
     }
 }
