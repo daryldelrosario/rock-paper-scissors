@@ -14,4 +14,4 @@ Live Demo:
 
 ## Updates
 ### Thursday, October 27, 2022
-* 1119pm: Completed the Rock Paper Scissors via JavaScript only
+* 11:19pm: Completed the Rock Paper Scissors via JavaScript only
