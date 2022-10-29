@@ -27,8 +27,13 @@ It is a five round program of the school-grade game 'Rock-Paper-Scissors'. The p
 
 ## How to Use the Program
 1. Open the program: https://daryldelrosario.github.io/rock-paper-scissors/
-2. Open Dev Tools > Console
-3. Use the function `game()` to play Rock-Paper-Scissors
+2. Right click and Inspect
+    * Alternatively Open Dev Tools `CTRL + SHIFT + C`
+3. Open Console
+4. Use the function `game();`
+5. Type `Rock` `Paper` or `Scissors` to choose
+6. Play for five(5) rounds
+7. Winner is announced at the end
 
 ## Updates
 ### Thursday, October 27, 2022
