@@ -37,4 +37,4 @@ It is a five round program of the school-grade game 'Rock-Paper-Scissors'. The p
 
 ## Updates
 ### Thursday, October 27, 2022
-* 1119pm: Completed the Rock Paper Scissors via JavaScript only
+* 1119pm: Completed the Rock Paper Scissors using JavaScript only
