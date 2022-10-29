@@ -18,7 +18,7 @@ It is a five round program of the school-grade game 'Rock-Paper-Scissors'. The p
 * JavaScript
 
 ## Features
-* The prompt used to take in input from user is non-case sensitive
+* The prompt used to take in the input from user is non-case sensitive
 * Each round tracks and displays:   
     * what the player chose
     * what the computer chose
