@@ -86,6 +86,8 @@ function game() {
     let playerScore = 0;
     let computerScore = 0;
 
+    /* Removing this logic as instructions in project
+
     for (let i = 0; i < 5; i++) {
         const playerSelection = prompt("Choose Rock - Paper - Scissors");
         const computerSelection = getComputerChoice();
@@ -117,6 +119,7 @@ function game() {
             console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
         }
     }
+    */
 
     console.log("=======");
     console.log("Player Total Score: " + playerScore);
