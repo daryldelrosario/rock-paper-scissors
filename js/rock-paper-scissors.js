@@ -16,6 +16,14 @@ function getComputerChoice() {
     }
 }
 
+const rock = document.querySelector("#rock");
+rock.addEventListener("click", () => {
+    playRound("Rock", getComputerChoice);
+});
+
+const paper = document.querySelector("#paper");
+const scissors = document.querySelector("#scissors");
+
 function getPlayerChoice() {
     let playerChoice = Math.floor(Math.random() * 3) + 1;
 
@@ -35,21 +43,25 @@ function getPlayerChoice() {
 }
 
 function playRound(playerSelection, computerSelection) {
+    computerSelection = getComputerChoice();
     let message = "";
 
     if(playerSelection.toLowerCase() === "rock") {
         switch (computerSelection) {
             case "Rock":
-                return message = "Both of you chose Rock, it's a Tie!";
+                message = "Both of you chose Rock, it's a Tie!";
+                console.log(message);
                 break;
             case "Paper":
-                return message = "You Lose! Paper beats Rock.";
+                message = "You Lose! Paper beats Rock.";
+                console.log(message);
                 break;
             case "Scissors":
-                return message = "You Win! Rock beats Scissors.";
+                message = "You Win! Rock beats Scissors.";
+                console.log(message);
                 break;
             default:
-                return("Experiencing Technical Difficulties");
+                console.log("Experiencing Technical Difficulties");
         }
     } else if(playerSelection.toLowerCase() === "paper") {
         switch (computerSelection) {
@@ -81,6 +93,7 @@ function playRound(playerSelection, computerSelection) {
         }
     }
 }
+
 
 function game() {
     let playerScore = 0;
