@@ -31,6 +31,11 @@ scissors.addEventListener("click", () => {
     playRound("Scissors", getComputerChoice);
 });
 
+const results = document.querySelector("#results");
+function showResults(message) {
+    results.textContent = message;
+}
+
 function getPlayerChoice() {
     let playerChoice = Math.floor(Math.random() * 3) + 1;
 
@@ -57,15 +62,15 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case "Rock":
                 message = "Both of you chose Rock, it's a Tie!";
-                console.log(message);
+                showResults(message);
                 break;
             case "Paper":
                 message = "You Lose! Paper beats Rock.";
-                console.log(message);
+                showResults(message);
                 break;
             case "Scissors":
                 message = "You Win! Rock beats Scissors.";
-                console.log(message);
+                showResults(message);
                 break;
             default:
                 console.log("Experiencing Technical Difficulties");
@@ -74,15 +79,15 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case "Rock":
                 message = "You Win! Paper beats Rock.";
-                console.log(message);
+                showResults(message);
                 break;
             case "Paper":
                 message = "Both of you chose Paper, it's a Tie!";
-                console.log(message);
+                showResults(message);
                 break;
             case "Scissors":
                 message = "You Lose! Scissors beats Paper.";
-                console.log(message);
+                showResults(message);
                 break;
             default:
                 console.log("Experiencing Techincal Difficulties");
@@ -91,15 +96,15 @@ function playRound(playerSelection, computerSelection) {
         switch (computerSelection) {
             case "Rock":
                 message = "You Lose! Rock beats Scissors.";
-                console.log(message);
+                showResults(message);
                 break;
             case "Paper":
                 message = "You Win! Scissors beats Paper.";
-                console.log(message);
+                showResults(message);
                 break;
             case "Scissors":
                 message = "Both of you chose Scissors, it's a Tie!";
-                console.log(message);
+                showResults(message);
                 break;
             default:
                 console.log("Experiencing Techical Difficulties");
