@@ -73,30 +73,36 @@ function playRound(playerSelection, computerSelection) {
     } else if(playerSelection.toLowerCase() === "paper") {
         switch (computerSelection) {
             case "Rock":
-                return message = "You Win! Paper beats Rock.";
+                message = "You Win! Paper beats Rock.";
+                console.log(message);
                 break;
             case "Paper":
-                return message = "Both of you chose Paper, it's a Tie!";
+                message = "Both of you chose Paper, it's a Tie!";
+                console.log(message);
                 break;
             case "Scissors":
-                return message = "You Lose! Scissors beats Paper.";
+                message = "You Lose! Scissors beats Paper.";
+                console.log(message);
                 break;
             default:
-                return("Experiencing Techincal Difficulties");
+                console.log("Experiencing Techincal Difficulties");
         }
     } else {
         switch (computerSelection) {
             case "Rock":
-                return message = "You Lose! Rock beats Scissors.";
+                message = "You Lose! Rock beats Scissors.";
+                console.log(message);
                 break;
             case "Paper":
-                return message = "You Win! Scissors beats Paper.";
+                message = "You Win! Scissors beats Paper.";
+                console.log(message);
                 break;
             case "Scissors":
-                return message = "Both of you chose Scissors, it's a Tie!";
+                message = "Both of you chose Scissors, it's a Tie!";
+                console.log(message);
                 break;
             default:
-                return("Experiencing Techical Difficulties");
+                console.log("Experiencing Techical Difficulties");
         }
     }
 }
