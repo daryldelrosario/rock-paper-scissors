@@ -22,7 +22,14 @@ rock.addEventListener("click", () => {
 });
 
 const paper = document.querySelector("#paper");
+paper.addEventListener("click", () => {
+    playRound("Paper", getComputerChoice);
+});
+
 const scissors = document.querySelector("#scissors");
+scissors.addEventListener("click", () => {
+    playRound("Scissors", getComputerChoice);
+});
 
 function getPlayerChoice() {
     let playerChoice = Math.floor(Math.random() * 3) + 1;
