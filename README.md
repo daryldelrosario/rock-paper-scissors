@@ -1,5 +1,8 @@
 # Classic Game of Rock Paper Scissors
+`Live Demo for Build User Interface:`   
 Live Demo: https://daryldelrosario.github.io/rock-paper-scissors/   
+
+`Demo Review for JavaScript Only:`   
 <kbd><img src="gif/rps-js-only.gif" padding="32px"></kbd>
 
 ## Acknowledgements
@@ -14,10 +17,10 @@ This is a JavaScript program built from scratch.
 
 It is a five round program of the school-grade game 'Rock-Paper-Scissors'.   
 
-`For JavaScript Only:`
+`For JavaScript Only:`   
 The program prompts the user to choose between 'Rock-Paper-Scissors' and the computer has a function that randomly generates an option for each round.   
 
-`For Build User Interface: `
+`For Build User Interface:`   
 Built a basic UI to allow User to choose Rock-Paper-Scissors and track the progress for five rounds. After five rounds, game finishes and checks to see if the user wants to `Play Again?`.
 
 ## Technologies Used
