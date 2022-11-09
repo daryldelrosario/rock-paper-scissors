@@ -1,167 +1,109 @@
-function getComputerChoice() {
-    let computerChoice = Math.floor(Math.random() * 3) + 1;
-    
-    switch (computerChoice) {
-        case 1:
-            return("Rock");
-            break;
-        case 2:
-            return("Paper");
-            break;
-        case 3:
-            return("Scissors");
-            break;
-        default: 
-            return("Experiencing Technical Difficulties");
+let playerScore = 0;
+let pcScore = 0;
+const playerChose = document.querySelector("#playerChose");
+const pcChose = document.querySelector("#pcChose");
+const results = document.querySelector("#results");
+const score = document.querySelector("#score");
+const winner = document.querySelector("#winner");
+const playButton = document.querySelector("#playButton");
+
+const buttons = document.querySelectorAll("button");
+buttons.forEach((b) => {
+    b.addEventListener("click", () => {
+        let playerSelect = b.id;
+        let pcSelect = getPCChoice();
+        let roundResult = playRound(playerSelect, pcSelect);
+        showScore();
+        theWinner(roundResult);
+    });
+});
+
+function playRound(playerSelect, pcSelect) {
+    let capPlayerSelect = capitalise(playerSelect);
+
+    let tie = `Both of you chose ${capPlayerSelect}, it's a Tie!`;
+    let playerWin = `You Win! ${capPlayerSelect} beats ${pcSelect}.`;
+    let pcWin = `You Lose! ${pcSelect} beats ${capPlayerSelect}.`;
+
+    if(capPlayerSelect === pcSelect) {
+        showChoice(capPlayerSelect, pcSelect);
+        showResults(tie);
+        return "tie";
+    } else if(capPlayerSelect === "Rock" && pcSelect === "Scissors") {
+        playerScore++;
+        showChoice(capPlayerSelect, pcSelect)
+        showResults(playerWin);
+        return "playerWin";
+    } else if(capPlayerSelect === "Paper" && pcSelect === "Rock") {
+        playerScore++;
+        showChoice(capPlayerSelect, pcSelect)
+        showResults(playerWin);
+        return "playerWin";
+    } else if(capPlayerSelect === "Scissors" && pcSelect === "Paper") {
+        playerScore++;
+        showChoice(capPlayerSelect, pcSelect)
+        showResults(playerWin);
+        return "playerWin";
+    } else {
+        pcScore++;
+        showChoice(capPlayerSelect, pcSelect)
+        showResults(pcWin);
+        return "pcWin";
     }
 }
 
-const rock = document.querySelector("#rock");
-rock.addEventListener("click", () => {
-    playRound("Rock", getComputerChoice);
-});
+// ======= Game Functions =======
+// Function to randomise computers choice
+function getPCChoice() {
+    const pick = ["Rock", "Paper", "Scissors"];
+    return pick[Math.floor(Math.random() * pick.length)];
+}
 
-const paper = document.querySelector("#paper");
-paper.addEventListener("click", () => {
-    playRound("Paper", getComputerChoice);
-});
+// Function to display game winner of five rounds
+function theWinner(roundResult) {
+    if(playerScore === 5 || pcScore === 5) {
+        document.querySelector("#rock").disabled = true;
+        document.querySelector("#paper").disabled = true;
+        document.querySelector("#scissors").disabled = true;
 
-const scissors = document.querySelector("#scissors");
-scissors.addEventListener("click", () => {
-    playRound("Scissors", getComputerChoice);
-});
+        if(roundResult === "playerWin") {
+            winner.textContent = "You Beat the PC! You Are The Winner!"; 
+            playAgain();   
+        } else {
+            winner.textContent = "The PC Beat You This Time!";
+            playAgain();
+        }
+    }
+}
 
-const results = document.querySelector("#results");
+// Function to play again
+function playAgain() {
+    const playAgain = document.createElement("button");
+    playAgain.textContent = "Play Again?";
+    playButton.appendChild(playAgain);
+    playButton.addEventListener("click", () => {
+        location.reload();
+    })
+}
+
+// ======= Helper Functions =======
+// Function to capitalise single words
+function capitalise(msg) {
+    return capsMsg = msg.charAt(0).toUpperCase() + msg.slice(1);
+}
+
+// Function to display choices made
+function showChoice(playerSelect, pcSelect) {
+    playerChose.textContent = "You Chose: " + playerSelect;
+    pcChose.textContent = "PC Chose: " + pcSelect;
+}
+
+// Function to show round results
 function showResults(message) {
     results.textContent = message;
 }
 
-function getPlayerChoice() {
-    let playerChoice = Math.floor(Math.random() * 3) + 1;
-
-    switch (playerChoice) {
-        case 1:
-            return("Rock");
-            break;
-        case 2: 
-            return("Paper");
-            break;
-        case 3:
-            return("Scissors");
-            break;
-        default:
-            return("Experiencing Technical Difficulties");
-    }
-}
-
-function playRound(playerSelection, computerSelection) {
-    computerSelection = getComputerChoice();
-    let message = "";
-
-    if(playerSelection.toLowerCase() === "rock") {
-        switch (computerSelection) {
-            case "Rock":
-                message = "Both of you chose Rock, it's a Tie!";
-                showResults(message);
-                break;
-            case "Paper":
-                message = "You Lose! Paper beats Rock.";
-                showResults(message);
-                break;
-            case "Scissors":
-                message = "You Win! Rock beats Scissors.";
-                showResults(message);
-                break;
-            default:
-                console.log("Experiencing Technical Difficulties");
-        }
-    } else if(playerSelection.toLowerCase() === "paper") {
-        switch (computerSelection) {
-            case "Rock":
-                message = "You Win! Paper beats Rock.";
-                showResults(message);
-                break;
-            case "Paper":
-                message = "Both of you chose Paper, it's a Tie!";
-                showResults(message);
-                break;
-            case "Scissors":
-                message = "You Lose! Scissors beats Paper.";
-                showResults(message);
-                break;
-            default:
-                console.log("Experiencing Techincal Difficulties");
-        }
-    } else {
-        switch (computerSelection) {
-            case "Rock":
-                message = "You Lose! Rock beats Scissors.";
-                showResults(message);
-                break;
-            case "Paper":
-                message = "You Win! Scissors beats Paper.";
-                showResults(message);
-                break;
-            case "Scissors":
-                message = "Both of you chose Scissors, it's a Tie!";
-                showResults(message);
-                break;
-            default:
-                console.log("Experiencing Techical Difficulties");
-        }
-    }
-}
-
-
-function game() {
-    let playerScore = 0;
-    let computerScore = 0;
-
-    /* Removing this logic as instructions in project
-
-    for (let i = 0; i < 5; i++) {
-        const playerSelection = prompt("Choose Rock - Paper - Scissors");
-        const computerSelection = getComputerChoice();
-
-        console.log("=======");
-        console.log("Round " + (i + 1));
-        console.log("=======");
-
-        let msg = playRound(playerSelection, computerSelection);
-
-        if(msg.includes("Win")) {
-            playerScore++;
-            console.log("Player Chose: " + playerSelection);
-            console.log("Computer Chose: " + computerSelection);
-            console.log(msg);
-            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
-        } else if(msg.includes("Lose")) {
-            computerScore++;
-            console.log("Player Chose: " + playerSelection);
-            console.log("Computer Chose: " + computerSelection);
-            console.log(msg);
-            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
-        } else {
-            playerScore++;
-            computerScore++;
-            console.log("Player Chose: " + playerSelection);
-            console.log("Computer Chose: " + computerSelection);
-            console.log(msg);
-            console.log("Score is - " + "Player: " + playerScore + " Computer: " + computerScore);
-        }
-    }
-    */
-
-    console.log("=======");
-    console.log("Player Total Score: " + playerScore);
-    console.log("Computer Total Score: " + computerScore);
-    console.log("=======");
-
-    if(playerScore > computerScore) {
-        console.log("You are the winner!");
-    } else if(playerScore < computerScore){
-        console.log("The computer beat you this time ...");
-    } else {
-        console.log("Looks like it's a tie +-");
-    }
+// Function to showScore
+function showScore() {
+    score.textContent = `Your Score: ${playerScore} | PC Score: ${pcScore}`;
 }
